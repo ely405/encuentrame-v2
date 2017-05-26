@@ -70,3 +70,7 @@ function initMap(){
   }
   document.getElementById('btn-trace-route').addEventListener('click', traceRoute);
 }
+
+var sectionForm = document.getElementById('section-form');
+console.log(sectionForm.clientHeight);
+console.log(sectionForm.offsetHeight);
