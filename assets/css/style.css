@@ -1,0 +1,17 @@
+.h-90vh{
+  height: 90vh;
+}
+.bg-yellow{
+  background-color: #EDB91B;
+}
+.c-white{
+  color: white;
+}
+.m-auto{
+  margin: auto;
+}
+.item-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
