@@ -1,9 +1,9 @@
 var inpOrigin = document.getElementById('inp-origin');
 var inpDestiny = document.getElementById('inp-destiny');
 function initMap(){
-  var laboratoriaLima = {lat: -12.1191427, lng: 77.0349046};
+  var laboratoriaLima = {lat: -12.1191427, lng: -77.0349046};
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 18,
+    zoom: 10,
     center: laboratoriaLima
   });
 
@@ -26,6 +26,7 @@ function initMap(){
     e.preventDefault();
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(successFunction);
+      markLaboratoria.setMap(null);
     } else {
       x.innerHTML = "La geolocalización no es compatible con este navegador.";
     }
@@ -70,7 +71,3 @@ function initMap(){
   }
   document.getElementById('btn-trace-route').addEventListener('click', traceRoute);
 }
-
-var sectionForm = document.getElementById('section-form');
-console.log(sectionForm.clientHeight);
-console.log(sectionForm.offsetHeight);
