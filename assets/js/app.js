@@ -1,37 +1,36 @@
 var inpOrigin = document.getElementById('inp-origin');
 var inpDestiny = document.getElementById('inp-destiny');
 function initMap(){
+  var laboratoriaLima = {lat: -12.1191427, lng: 77.0349046};
   var map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
-    zoom: 6
+    zoom: 18,
+    center: laboratoriaLima
   });
 
-  var infoWindow = new google.maps.InfoWindow({map: map});
-  function successFunction(position){
-    var myPosition = {
-      lat: position.coords.latitude,
-      lng: position.coords.longitude
-    };
+  var markLaboratoria = new google.maps.Marker({
+    position: laboratoriaLima,
+    map: map
+  });
 
-    infoWindow.setPosition(myPosition);
-    infoWindow.setContent('Ubicaión Encontrada');
-    map.setCenter(myPosition);
+  function successFunction(myPosition){
+    var myLat = myPosition.coords.latitude;
+    var myLon = myPosition.coords.longitude;
+    var myLocation = new google.maps.Marker({
+      position: {lat: myLat, lng: myLon},
+      map: map
+    });
     map.setZoom(18);
-    // var myLocation = new google.maps.Marker({
-    //   position: {lat: myLat, lng: myLon},
-    //   map: map
-    // });
-    // map.setCenter({lat: myLat, lng: myLon});
+    map.setCenter({lat: myLat, lng: myLon});
   }
-
-  function findMe(){
+  function findMe(e){
+    e.preventDefault();
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(successFunction);
     } else {
       x.innerHTML = "La geolocalización no es compatible con este navegador.";
     }
   }
-  document.getElementById('btn-find-me').addEventListener("click", findMe);
+  document.getElementById('btn-find-me').addEventListener('click', findMe);
 
   new google.maps.places.Autocomplete(inpOrigin);
   new google.maps.places.Autocomplete(inpDestiny);
@@ -56,6 +55,7 @@ function initMap(){
       if(status === 'OK'){
         calculatePrice();
         directionsDisplay.setDirections(response);
+        markLaboratoria.setMap(null);
       }else{
         window.alert("No encontramos una ruta.");
       }

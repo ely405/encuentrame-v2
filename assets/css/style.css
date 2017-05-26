@@ -1,21 +1,37 @@
 .h-90vh{
   height: 90vh;
 }
+.btm-120{
+  bottom: 12rem;
+}
 .bg-yellow{
   background-color: #EDB91B;
 }
 .c-white{
   color: white;
 }
+.bc-white{
+  border-color: white;
+}
 .m-auto{
   margin: auto;
+}
+.p-abs{
+  position: absolute;
 }
 .item-center{
   display: flex;
   align-items: center;
   justify-content: center;
 }
+.fs-20{
+  font-size: 2rem;
+}
 #rate{
   width: 15rem;
-  height: 25rem;
+  height: 15rem;
 }
+.plh-white::-webkit-input-placeholder { color: white;}
+.plh-white:-moz-placeholder { color: white;}
+.plh-white::-moz-placeholder { color: white;}
+.plh-white:-ms-input-placeholder { color: white;}
